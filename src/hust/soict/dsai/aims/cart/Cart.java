@@ -30,6 +30,45 @@ public class Cart{
     	this.addDigitalVideoDisc(dvd2);
     }
 
+    public float totalCost(){
+        float total = 0;
+        for (int i = 0; i < qtyOrdered; i++){
+            total += itemsOrdered[i].getCost();
+        }
+        return total;
+    }
+
+    public void print() {
+        System.out.println("***********************CART***********************");
+        for(int i = 0; i < qtyOrdered; i++) {
+            System.out.println(i + ". DVD - " + itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getCategory() + " - "
+                    + itemsOrdered[i].getDirector() + " - " + itemsOrdered[i].getLength() + " - " + itemsOrdered[i].getCost() + " $");}
+        System.out.println("Total cost: "+ this.totalCost() + " $");
+        System.out.println("***************************************************");
+    }
+
+    public void SID(int id) {
+        for(int i = 0; i < qtyOrdered;i++){
+            if (itemsOrdered[i].getID() == id){
+                System.out.println("Yes, there is a match in the cart.(Via SID (String id))");
+                return;
+            }
+        }
+        System.out.println("No disc with this id found");
+    }
+
+    public void STT(String id){
+        for(int i = 0; i < qtyOrdered;i++){
+            if (itemsOrdered[i].getTitle().equals(id)){
+                System.out.println("Yes, there is a match in the cart.(Via STT (String id))");
+                return;
+            }
+        }
+        System.out.println("No disc with this title found");
+    }
+
+
+
 }
 
 
