@@ -67,6 +67,24 @@ public class Cart{
         System.out.println("No disc with this title found");
     }
 
+    public void searchByTitle(String title) {
+        if (itemsOrdered.length == 0) {
+            System.out.println("The cart is empty.");
+            return;
+        }
+
+        boolean matchFound = false;
+        for (DigitalVideoDisc dvd : itemsOrdered) {
+            if (dvd != null && dvd.isMatch(title)) {
+                System.out.println("Yes, there is a match in the cart.(Via searchByTitle(String title))");
+                matchFound = true;
+            }
+        }
+
+        if (!matchFound) {
+            System.out.println("No match found for the title: " + title);
+        }
+    }
 
 
 }
